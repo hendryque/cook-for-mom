@@ -19,12 +19,16 @@ export default Fluid.extend({
 });
 
 function computeStyleTop(element) {
-  let child = element.firstElementChild;
+  let z = -2;
+  let scale = 3;
   let frameHeight = element.parentElement.clientHeight;
+  // let transform = `translateZ(${z}px) scale(${scale}) translateY(${frameHeight - element.clientHeight}px)`;
+  let transform = `translateZ(${z}px) translateY(${(window.innerHeight / 2) + frameHeight - element.clientHeight}px) scale(${scale}) translateY(${element.clientHeight / (1 - scale)}px)`;
 
-  element.parentElement.style.height = `${frameHeight}px`;
-  element.style.top = `calc(${frameHeight}px - 50vh)`;
-  element.style.height = `${3 * frameHeight}px`;
+  // element.parentElement.style.height = `${frameHeight}px`;
+  // element.style.top = `calc(${frameHeight}px - 50vh)`;
+  // element.style.height = `${3 * frameHeight}px`;
+  element.style.transform = transform;
 
   // middle
   // child.style['margin-top'] = `${(frameHeight - child.clientHeight) / 2}px`;
