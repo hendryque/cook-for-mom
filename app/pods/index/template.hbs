@@ -18,10 +18,11 @@
   cancelNudge=(action (mut application.isNudging) false)}}
 
 {{#parallax-container as |parallax|}}
-  {{parallax.fluid class='background potatoes'
-    onResize=(action computeParallaxBackgroundStyle)}}
+  {{#parallax.background}}
+    <img src='/assets/images/food/potatoes-1800.jpg' />
+  {{/parallax.background}}
 
-  {{#parallax.fluid class='container-fluid mt-4 mb-4 pt-4 pb-4'}}
+  {{#parallax.fluid class='container-fluid'}}
     {{#index/section-objection class='col-md-4 rounded' as |objection|}}
       {{#objection.question}} Are you more comfortable washing than cooking? {{/objection.question}}
       {{#objection.answer}}
@@ -66,10 +67,11 @@
 {{/index/section-info}}
 
 {{#parallax-container as |parallax|}}
-  {{parallax.fluid class='background soup'
-    onResize=(action computeParallaxBackgroundStyle)}}
+  {{#parallax.background}}
+    <img src='/assets/images/food/soup-1800.jpg' />
+  {{/parallax.background}}
 
-  {{#parallax.fluid class='container-fluid mt-4 mb-4 pt-4 pb-4'}}
+  {{#parallax.fluid class='container-fluid'}}
     {{#index/section-objection class='col-md-4 offset-md-4 rounded' as |objection|}}
       {{#objection.question}} Is Mom vegan? Need a gluten-free option? {{/objection.question}}
       {{#objection.answer}}
@@ -118,10 +120,11 @@
 {{/index/section-info}}
 
 {{#parallax-container as |parallax|}}
-  {{parallax.fluid class='background tacos'
-    onResize=(action computeParallaxBackgroundStyle)}}
+  {{#parallax.background}}
+    <img src='/assets/images/food/tacos-1-1800.jpg' />
+  {{/parallax.background}}
 
-  {{#parallax.fluid class='container-fluid mt-4 mb-4 pt-4 pb-4'}}
+  {{#parallax.fluid class='container-fluid'}}
     {{#index/section-objection class='col-md-4 offset-md-7 rounded' as |objection|}}
       {{#objection.question}} Feeling crunched for time? {{/objection.question}}
       {{#objection.answer}}
@@ -157,10 +160,11 @@
 {{/index/section-info}}
 
 {{#parallax-container as |parallax|}}
-  {{parallax.fluid class='background cookies'
-    onResize=(action computeParallaxBackgroundStyle)}}
+  {{#parallax.background}}
+    <img src='/assets/images/food/cookies-1800.jpg' />
+  {{/parallax.background}}
 
-  {{#parallax.fluid class='container-fluid mt-4 mb-4 pt-4 pb-4'}}
+  {{#parallax.fluid class='container-fluid'}}
     {{#index/section-objection class='col-md-4 offset-md-5 rounded' as |objection|}}
       {{#objection.question}} Need kitchen gear? {{/objection.question}}
       {{#objection.answer}}
@@ -211,10 +215,11 @@
 {{/index/section-info}}
 
 {{#parallax-container as |parallax|}}
-  {{parallax.fluid class='background heart'
-    onResize=(action computeParallaxBackgroundStyle)}}
+  {{#parallax.background}}
+    <img src='/assets/images/heart.jpg' />
+  {{/parallax.background}}
 
-  {{#parallax.fluid class='container-fluid mt-4 mb-4 pt-4 pb-4'}}
+  {{#parallax.fluid class='container-fluid'}}
     {{#index/section-objection class='col-md-4 col-md-3 rounded' as |objection|}}
       {{#objection.question}} Don't cook alone! {{/objection.question}}
       {{#objection.answer}}

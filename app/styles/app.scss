@@ -9,6 +9,7 @@ html, body {
     display: none;
   }
 
-  -webkit-overflow-scrolling: touch;
+  // todo: find a parallax-compliant mobile safari override
+  // -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }

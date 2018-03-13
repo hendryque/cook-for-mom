@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { bind, once } from '@ember/runloop';
+import { bind, once, schedule } from '@ember/runloop';
 import { isPresent } from '@ember/utils';
 
 export default Component.extend({
@@ -22,6 +22,8 @@ export default Component.extend({
   },
 
   didInsertElement() {
+    let height = this.element.clientHeight;
+
     setActiveAnchor.call(this);
     this._anchorChangeListener = bind(this, once, this, setActiveAnchor);
     this._hoverNudgeListener = bind(this, once, this, hoverNudgeListener);
@@ -39,6 +41,11 @@ export default Component.extend({
     this.element.addEventListener('mouseover', this._hoverNudgeListener, {
       capture: true,
       passive: true
+    });
+
+    schedule('afterRender', this, () => {
+      this.element.parentElement
+        .style['perspective-origin'] = `50% calc(50% + ${height / 2})`;
     });
 
     if (this.get('userAgent.browser.isFirefox')) {
