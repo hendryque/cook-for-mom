@@ -39,12 +39,17 @@
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-component-css": "^0.6.2",
+    "ember-concurrency": "^0.8.16",
     "ember-cp-validations": "^3.5.2",
     "ember-data": "~3.0.0",
     "ember-export-application-global": "^2.0.0",
+    "ember-fingerprintjs2": "^0.0.3",
+    "ember-firebase-service": "^4.0.0",
+    "ember-full-story": "^0.1.1",
     "ember-is-mobile": "^2.0.5",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-md5": "^1.1.0",
     "ember-metrics": "^0.12.1",
     "ember-moment": "stefanpenner/ember-moment",
     "ember-power-calendar": "^0.7.1",
@@ -54,6 +59,7 @@
     "ember-useragent": "^0.5.0",
     "ember-wormhole": "0.5.3",
     "eslint-plugin-ember": "^5.0.0",
+    "fingerprintjs2": "^1.6.1",
     "loader.js": "^4.2.3",
     "prember": "^0.2.2",
     "prember-sitemap-generator": "^0.0.3"
@@ -63,5 +69,8 @@
   },
   "dependencies": {
     "ember-cli-sentry": "3.0.0-beta.3"
-  }
+  },
+  "fastbootDependencies": [
+    "blueimp-md5"
+  ]
 }

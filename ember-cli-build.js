@@ -21,5 +21,8 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import('node_modules/firebase/firebase.js');
+  app.import('node_modules/firebase/firebase-firestore.js');
+
   return app.toTree();
 };
