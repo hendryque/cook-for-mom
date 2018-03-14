@@ -33,7 +33,9 @@ a.anchor {
   }
 }
 
-.parallax-container .container-fluid {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+.parallax-container {
+  .container-fluid {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
 }

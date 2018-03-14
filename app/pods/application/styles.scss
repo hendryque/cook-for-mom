@@ -5,6 +5,14 @@
   overflow-x: hidden;
   overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // todo: find a parallax-compliant mobile safari override
+  // -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
   perspective: 1px;
   perspective-origin: bottom;
 }

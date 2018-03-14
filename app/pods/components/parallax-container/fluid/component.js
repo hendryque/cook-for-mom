@@ -1,13 +1,18 @@
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 import { isPresent } from '@ember/utils';
-import { bind, schedule } from '@ember/runloop';
+import { next, bind, schedule } from '@ember/runloop';
 
 export default Component.extend({
-  // todo: support custom transform functions / z values?
-  didInsertElement() {
-    this._onResize = bind(this, computeStyleTop, this.element);
+  userAgent: service(),
 
-    schedule('afterRender', this, this._onResize);
+  z: -1,
+  scale: 2, // todo: compute this from z, with #math
+
+  didInsertElement() {
+    this._onResize = bind(this, computeStyleTop);
+
+    next(this, this._onResize);
     window.addEventListener('resize', this._onResize, { passive: true });
   },
 
@@ -19,17 +24,35 @@ export default Component.extend({
   }
 });
 
-function computeStyleTop(element) {
-  let z = -1;
-  let scale = 2;
+function computeStyleTop() {
+  let p = 1; // todo read this somehow
+  let { element, z, scale, verticalAlign, userAgent } =
+    this.getProperties('element', 'z', 'scale', 'verticalAlign', 'userAgent');
   let frameHeight = element.parentElement.clientHeight;
-  // let transform = `translateZ(${z}px) scale(${scale}) translateY(${frameHeight - element.clientHeight}px)`;
-  let transform = `translateZ(${z}px) translateY(${(window.innerHeight / 2) + frameHeight - element.clientHeight}px) scale(${scale}) translateY(${element.clientHeight / (1 - scale)}px)`;
+  let originalHeight = element.clientHeight;
+  let projectedHeight = originalHeight * (1 + (z / (p - z)));
 
-  // element.parentElement.style.height = `${frameHeight}px`;
-  // element.style.top = `calc(${frameHeight}px - 50vh)`;
-  // element.style.height = `${3 * frameHeight}px`;
-  element.style.transform = transform;
+  let transforms = [
+    `translateY(${frameHeight - element.clientHeight}px)`, // normalize frame + elem bottom
+    `translateZ(${z}px)`, // translate to back plane
+    `scale(${scale})`, // scale back to same visual size; todo compute scale factor dynamically
+  ];
+
+  if (!userAgent.get('browser.isSafari')) {
+    let matchedBottoms = (projectedHeight - projectedHeight * scale) / 2
+
+    transforms.push(`translateY(${matchedBottoms}px)`);
+  }
+
+  element.style.transform = transforms.join(' ');
+
+  // default verticalAlign = bottom
+  if (verticalAlign === 'middle') {
+    let child = element.firstElementChild;
+    let translationToCenter = (projectedHeight * scale - projectedHeight) / 2;
+
+    child.style.transform = `translateY(${translationToCenter}px)`;
+  }
 
   // middle
   // child.style['margin-top'] = `${(frameHeight - child.clientHeight) / 2}px`;

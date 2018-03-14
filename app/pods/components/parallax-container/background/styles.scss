@@ -1,6 +1,12 @@
 & {
   position: absolute;
+  width: 100%;
   z-index: -1;
-  transform: translateZ(-2px) scale(3);
   overflow: hidden;
+
+  // transform: defined on the fly in component.js
+}
+
+* {
+  width: 100%;
 }
