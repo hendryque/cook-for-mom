@@ -1,12 +1,10 @@
-{{#unless didSubmit}}
+{{#if (or (not didSubmit) didReset)}}
   {{yield (hash
-    didSubmit=didSubmit
     header=(component headerComponent)
     main=(component mainComponent tagName='fieldset')
     footer=(component footerComponent)
     keydown=(action keydown)
     submit=(action submit)
-    reset=(action (mut didSubmit) false)
   )}}
 {{else}}
   {{#component headerComponent}}
@@ -39,7 +37,7 @@
   {{#component footerComponent class='mt-4'}}
     {{#if canReset}}
       <button class='btn btn-link text-secondary align-baseline' type='button'
-        onclick={{action (mut didSubmit) false}}>
+        onclick={{action (mut didReset) true}}>
         Reset
       </button>
 
@@ -51,4 +49,4 @@
       Share on Facebook
     </button>
   {{/component}}
-{{/unless}}
+{{/if}}

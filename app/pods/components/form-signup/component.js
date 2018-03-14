@@ -10,9 +10,11 @@ export default Component.extend({
   tagName: 'form',
 
   isMobile: service(),
+  metrics: service(),
 
   didSubmit: false,
   canReset: true,
+  didReset: false,
   shouldFocusInput: not('isMobile.any'),
 
   onSubmit() {},
@@ -22,9 +24,6 @@ export default Component.extend({
   headerComponent: 'form-signup/header',
   mainComponent: 'form-signup/main',
   footerComponent: 'form-signup/footer',
-
-  share,
-  buySupplies() {},
 
   didInsertElement() {
     let {
@@ -62,6 +61,15 @@ export default Component.extend({
     this._viewportListener = null;
   },
 
+  share(platform) {
+    this.get('metrics').trackEvent('Segment', {
+      event: 'share',
+      platform
+    });
+
+    share(platform);
+  },
+
   keydown(event) {
     switch (event.key) {
       case 'Enter': this.submit(event);
@@ -72,8 +80,7 @@ export default Component.extend({
     event.preventDefault();
 
     if (this.get('onSubmit')(event) !== false) {
-      alert('todo submit');
-      this.set('didSubmit', true);
+      this.set('didReset', false);
     }
   }
 });

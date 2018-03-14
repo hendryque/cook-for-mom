@@ -28,6 +28,6 @@ function trackPage(ctx) {
     const page = ctx.get('url');
     const title = ctx.getWithDefault('currentRouteName', 'unknown');
 
-    get(ctx, 'metrics').trackPage({ page, title });
+    get(ctx, 'metrics').trackPage('Segment', { page, title });
   });
 }

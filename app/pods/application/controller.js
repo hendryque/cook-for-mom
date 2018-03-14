@@ -1,11 +1,21 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-export default Controller.extend({
-  router: service(),
+import md5 from 'md5';
 
-  didSubmit: false,
+export default Controller.extend({
+  fingerprintjs: service(),
+  firebase: service(),
+  metrics: service(),
+  router: service(),
+  raven: service(),
+
+  fingerprint: null, // n.b. set on init
   canNudgeUser: false,
+  didSubmit: computed(function() {
+    return typeof FastBoot === 'undefined' && localStorage.getItem('didSubmit');
+  }),
 
   isNudging: null, // is object
   _nudgesRequested: null, // is array
@@ -13,6 +23,16 @@ export default Controller.extend({
   init() {
     this._super(...arguments);
     this._nudgesRequested = [];
+  },
+
+  nudge(application, topic, name) {
+    application.set('isNudging', true);
+
+    this.get('metrics').trackEvent('Segment', {
+      event: 'nudge',
+      topic,
+      name
+    });
   },
 
   requestNudgeFor(application, topic, name) {
@@ -27,9 +47,23 @@ export default Controller.extend({
 
     if (!isRepeatRequest) {
       requested.addObject({ topic, name, timestamp: new Date() });
-      application.set('isNudging', true);
+      application.nudge(application, topic, name);
 
       return true;
     }
+  },
+
+  onEmailSubmitted(application, email, source) {
+    let distinctId = md5(email);
+    let metrics = this.get('metrics');
+
+    metrics.identify('Segment', { distinctId, email });
+    metrics.trackEvent('Segment', {
+      event: 'signup',
+      source
+    });
+
+    application.set('didSubmit', true);
+    localStorage.setItem('didSubmit', true);
   }
 });

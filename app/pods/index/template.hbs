@@ -3,7 +3,7 @@
   validations=validations
   didSubmit=(readonly application.didSubmit)
   onInput=(action (mut email))
-  onSubmit=(action (mut application.didSubmit) true)
+  onSubmit=(action application.onEmailSubmitted application email 'hero')
   onFormVisibilityChange=(action (mut isHeroFormShowing))}}
 
 {{index/nav-bar
@@ -13,7 +13,7 @@
   isNudging=(readonly application.isNudging)
   didSubmit=(readonly application.didSubmit)
   onInput=(action (mut email))
-  onSubmit=(action (mut application.didSubmit) true)
+  onSubmit=(action application.onEmailSubmitted application email 'nav')
   requestNudgeFor=(action application.requestNudgeFor application 'navbar')
   cancelNudge=(action (mut application.isNudging) false)}}
 
@@ -110,7 +110,7 @@
           dayIsDisabled=calendar.dayIsDisabled as |day|}}
           {{course-calendar/day calendar day
             didSubmit=(readonly application.didSubmit)
-            nudgeSignup=(action (mut application.isNudging) true)}}
+            nudgeSignup=(action application.nudge application 'calendar' 'click-today')}}
         {{/power.days}}
       {{/power-calendar}}
     </div>
