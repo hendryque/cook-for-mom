@@ -12,12 +12,9 @@ const Router = EmberRouter.extend({
   didTransition() {
     this._super(...arguments);
 
-    if (typeof FastBoot === undefined) {
+    if (typeof FastBoot === 'undefined') {
       trackPage(this);
     }
-  },
-
-  _trackPage() {
   }
 });
 
