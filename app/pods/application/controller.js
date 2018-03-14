@@ -65,5 +65,16 @@ export default Controller.extend({
 
     application.set('didSubmit', true);
     localStorage.setItem('didSubmit', true);
+  },
+
+  trackAffiliate(application, merchant, item, { target } = { target: {} }) {
+    let { href } = target;
+
+    application.get('metrics').trackEvent('Segment', {
+      event: 'affiliate',
+      merchant,
+      item,
+      href
+    });
   }
 });
