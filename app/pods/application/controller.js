@@ -28,7 +28,7 @@ export default Controller.extend({
   nudge(application, topic, name) {
     application.set('isNudging', true);
 
-    this.get('metrics').trackEvent('Segment', {
+    application.get('metrics').trackEvent('Segment', {
       event: 'nudge',
       topic,
       name
@@ -55,7 +55,7 @@ export default Controller.extend({
 
   onEmailSubmitted(application, email, source) {
     let distinctId = md5(email);
-    let metrics = this.get('metrics');
+    let metrics = application.get('metrics');
 
     metrics.identify('Segment', { distinctId, email });
     metrics.trackEvent('Segment', {
