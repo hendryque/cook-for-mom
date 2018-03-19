@@ -1,0 +1,753 @@
+<heml>
+  <head>
+    <font href='https://fonts.googleapis.com/css?family=Itim|Lato:300,400|Zilla+Slab:300,400' />
+
+    <style>
+      body, container {
+        background-color: #ECC272;
+        font-family: "Zilla Slab", Georgia, Times, "Times New Roman", serif;
+        font-size: 16px;
+      }
+
+      container {
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      strong {
+        font-weight: 400;
+      }
+
+      block {
+        background-color: #F8E9CE;
+        font-weight: 300;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+        font-weight: 400;
+      }
+
+      .footer {
+        text-align: center;
+        color: #BA9C85;
+      }
+
+      .footer a {
+        color: #BA9C85;
+      }
+
+      .header__hero {
+        background-image: url("https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/97a21eea-ac1d-4538-b18d-bdab21f5ea5e.jpg");
+        background-size: cover;
+        background-position: 50% 55%;
+        background-repeat: no-repeat;
+        background-color: #946039;
+
+        width: 100%;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #946039;
+        box-sizing: border-box;
+
+        text-align: center;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+      }
+
+      .header__hero h1 {
+        margin-bottom: 48px;
+        font-family: "Itim", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+      }
+
+      block.header__content {
+        padding: 16px 24px;
+      }
+
+      .header__introduction {
+      }
+
+      .header__table-of-contents {
+        background-color: white;
+      }
+
+      .header__table-of-contents h4 {
+        margin-top: 0;
+      }
+
+      .header__table-of-contents ul {
+        margin: 0;
+      }
+
+      .header__table-of-contents li {
+        margin-bottom: 8px;
+        list-style-type: none;
+      }
+
+      .header__table-of-contents column {
+        vertical-align: middle !important;
+      }
+
+      .header__table-of-contents--name {
+        padding-left: 16px;
+      }
+
+      .header__opt-out {
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      .recipes {
+        margin: 24px 0;
+      }
+
+      block.recipes__introduction {
+        padding: 16px 24px;
+      }
+
+      .recipes__recipe {
+      }
+
+      .recipe {
+      }
+
+      block.recipe__header {
+        padding: 0 24px;
+        margin-bottom: 8px;
+      }
+
+      .recipe__title {
+        margin-bottom: 0;
+      }
+
+      .recipe__subtitle,
+      .recipe__yield {
+        font-weight: 300;
+        margin: 0;
+      }
+
+      .recipe__subtitle {
+        margin: 0 0 8px;
+      }
+
+      .recipe__image {
+        border-width: 12px;
+        border-color: #FFFFFF;
+        border-style: solid;
+        box-sizing: border-box;
+        width: 100%;
+      }
+
+      block.recipe__content {
+        padding: 0 24px;
+      }
+
+      .recipe__ingredients,
+      .recipe__directions,
+      .recipe__subrecipe {
+        background-color: white;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        padding-top: 8px;
+      }
+
+      .recipe__subrecipe block.recipe__ingredients,
+      .recipe__subrecipe block.recipe__directions {
+        padding: 0;
+      }
+
+      .recipe__subrecipe .recipe__title {
+        margin-top: 0;
+      }
+
+      .ingredients__title {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .recipe__subrecipe--assembly .recipe__title {
+        text-decoration: underline;
+      }
+
+      .ingredients__list,
+      .directions__list {
+        padding-top: 0;
+        padding-bottom: 16px;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .recipe__subrecipe .ingredients__list,
+      .recipe__subrecipe .directions__list {
+        padding-bottom: 0 !important;
+      }
+
+      .ingredients__title {
+        margin-bottom: 16px;
+      }
+
+      .ingredients__ingredient,
+      .ingredients__notes .notes__note {
+        list-style-type: circle;
+      }
+
+      .notes {
+        list-style-type: none;
+      }
+
+      .notes ul {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-style: italic;
+      }
+
+      .ingredients__ingredient {
+      }
+
+      .directions__list {
+        margin: 0;
+      }
+
+      .directions__direction,
+      .directions__notes .notes__note {
+        list-style-type: none;
+        margin-bottom: 8px;
+      }
+
+      .directions__notes {
+        border-left-size: 2px;
+        border-left-color: #946039;
+        border-left-style: solid;
+
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+    <container>
+      <block class='header'>
+        <block class='header__hero'>
+          <h1> Thanks for signing up! </h1>
+        </block>
+
+        <block class='header__content'>
+          <p> We appreciate your interest in <strong><a href='https://cookformom.com?utm_source=mailchimp&utm_medium=email&utm_campaign=*|CAMPAIGN_UID|*&utm_content=intro-link&mc_referrer=*|EMAIL|*' target='_blank'>Cook For Mom</a></strong>, and are excited to cook with you. This email includes your free Mother's Day meal plan, featuring four gourmet recipes we are confident will impress. </p>
+          <p> Starting <strong>April 2</strong>, we will send you a <strong>weekly email</strong> featuring custom lessons and recipes, designed to help you build up skills and learn new recipes as the big day approaches. </p>
+          <p> We believe cooking is best with others, and hope you will join us on <strong><a href='https://www.instagram.com/cookformomdotcom/' target='_blank'>Instagram</a></strong>, <strong><a href='https://www.facebook.com/cookformomdotcom/' target='_blank'>Facebook</a></strong>, and <strong><a href='https://twitter.com/cookformom' target='_blank'>Twitter</a></strong> using the hashtag #cookformom. </p>
+          <p> Finally, if you have a friend you think should join us: please <strong><a href='https://www.facebook.com/v2.12/dialog/share?app_id=1004569109682616&display=popup&href=https%3A%2F%2Fcookformom.com&quote=I%27m%20learning%20to%20cook%20a%203-course%20gourmet%20meal%20that%20will%20impress%20mom%20this%20Mother%27s%20Day.%20Come%20join%20me%20at%20https%3A%2F%2Fcookformom.com!' target='_blank'>share on Facebook</a></strong>, or <strong>forward this email</strong>! </p>
+
+          <block class='header__table-of-contents'>
+            <h4> Today's Recipes </h4>
+            <ul>
+              <li><row>
+                <column large=1 small=3> <a href='#recipe__purple-potatoes'><img src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/bcd7d288-c3c7-4f35-8f73-6906ca9673b9.png' /></a> </column>
+                <column large=11 small=9 class='header__table-of-contents--name'> <a href='#recipe__purple-potatoes'><strong>Purple potatoes</strong> with pickled cabbage and crema</a> </column>
+              </row></li>
+              <li><row>
+                <column large=1 small=3> <a href='#recipe__soup'><img src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/22ec5300-6a34-4cf0-b2f5-2c37fcebff1d.png' /></a> </column>
+                <column large=11 small=9 class='header__table-of-contents--name'> <a href='#recipe__soup'>Salmorejo—a rustic Spanish <strong>tomato soup</strong>—garnished with eggs, breadcrumbs, and ham</a> </column>
+              </row></li>
+              <li><row>
+                <column large=1 small=3> <a href='#recipe__tacos'><img src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/d5696be6-bebd-4a03-aaff-c6650f5a8629.png' /></a> </column>
+                <column large=11 small=9 class='header__table-of-contents--name'> <a href='#recipe__tacos'>Homemade tortilla with <strong>roasted pork shoulder or cauliflower</strong>, pickled jalapeños, jicama, cotija cheese, and pico de gallo</a> </column>
+              </row></li>
+              <li><row>
+                <column large=1 small=3> <a href='#recipe__cookies'><img src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/afeba028-5089-4f06-8838-abcc49afd845.png' /></a> </column>
+                <column large=11 small=9 class='header__table-of-contents--name'> <a href='#recipe__cookies'>Fresh-Baked Ginger Molasses <strong>Cookies</strong></a> </column>
+              </row></li>
+            </ul>
+          </block>
+
+          <p><small><em> If you're not interested in receiving our weekly emails, please <a href='*|UNSUB|*' target='_blank'>click here to opt out now</a>, and consider sharing feedback. Though we're sad to see you go, we'd rather not spam you! </em></small></p>
+        </block>
+      </block>
+
+      <block class='recipes'>
+        <block class='recipes__introduction'>
+          <p> All of these dishes are <strong>prep-focused</strong>. Meaning that all the elements are <strong>prepared in advance</strong>, so during dinner, you’re not cooking anything, just assembling. So most of these recipes are written as <strong>a series of small projects</strong>, with the assembly instructions at the bottom. </p>
+          <p> Other than keeping stuff warm, the only thing that needs to be cooked during dinner is the cookies. This means <strong>you can socialize at the table</strong> instead of being trapped in the kitchen. </p>
+        </block>
+
+        <block class='recipe recipes__recipe'>
+          <a id='recipe__purple-potatoes' />
+          <block class='recipe__header'>
+            <h2 class='recipe__title'> Purple potatoes with pickled cabbage and crema </h2>
+            <h3 class='recipe__subtitle'> (vegan alternative with cashew sauce included!) </h3>
+            <h6 class='recipe__yield'> Makes 4 servings. </h6>
+          </block>
+
+          <img class='recipe__image' src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/0271f306-0bb9-4989-8822-9caba3cee879.jpg' />
+
+          <block class='recipe__content'>
+            <block class='ingredients recipe__ingredients'>
+              <h4 class='ingredients__title'> Ingredients </h4>
+              <ul class='ingredients__list'>
+                <li class='ingredients__ingredient'> ¼ small <strong>purple cabbage</strong> </li>
+                <li class='ingredients__ingredient'> 2 tbsp <strong>salt</strong> </li>
+                <li class='ingredients__ingredient'> 1 tbsp <strong>sugar</strong> </li>
+                <li class='ingredients__ingredient'> ½ cup <strong>vinegar</strong> (white, rice or apple cider will do) </li>
+                <li class='ingredients__ingredient'> 2 cups <strong>water</strong> </li>
+                <li class='ingredients__ingredient'> 6 <strong>purple potatoes</strong> </li>
+                <li class='ingredients__ingredient'> ¼ cup <strong>crema</strong> </li>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> Crema is an extra-thick Mexican sour cream. It makes everything great and is commonly available in Latin groceries. </li>
+                    <li class='notes__note'> Replace with <strong><a href='#recipe__cashew-sauce'>cashew sauce</a></strong> for a vegan version. </li>
+                  </ul>
+                </li>
+                <li class='ingredients__ingredient'> Torn <strong>cilantro</strong> to garnish </li>
+              </ul>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <a id='recipe__pickled-cabbage' />
+              <h4 class='recipe__title'> Pickled Cabbage </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Shred or julienne the <strong>cabbage</strong>. It should produce about 2 cups. </li>
+                  <li class='directions__direction'> In a small pot on high heat, bring <strong>salt</strong>, <strong>sugar</strong>, <strong>vinegar</strong> and <strong>water</strong> to a boil. Place <strong>cabbage</strong> in a bowl or container and pour the <strong>hot brine</strong> over top. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> Advanced technique: the <a href='#recipe__pickled-jalapeños'>tacos' <strong>pickled jalapeños</strong></a> will require <strong>brine</strong> as well. Prepare an extra half-batch now to <strong>save time</strong> and better <strong>match flavors</strong> between dishes! </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> It should be ready to eat in <strong>20 minutes</strong>. Once cooled, cover and store in <strong>fridge</strong>. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Potatoes </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Place <strong>potatoes</strong> in a large pot of <strong>lightly salted water</strong>. Bring to a boil, reduce to simmer until potatoes are <strong>soft but not mushy</strong>, about <strong>20 minutes</strong>. </li>
+                  <li class='directions__direction'> Strain and cool. Store in fridge. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <a id='recipe__cashew-sauce' />
+              <h4 class='recipe__title'> Cashew Sauce </h4>
+              <block class='ingredients recipe__ingredients'>
+                <h4 class='ingredients__title'> Ingredients </h4>
+                <ul class='ingredients__list'>
+                  <li class='ingredients__ingredient'> ½ cup <strong>cashews</strong>, roasted
+                  <li class='ingredients__ingredient'> 1 clove <strong>garlic</strong>
+                  <li class='ingredients__ingredient'> ¼ cup <strong>nutritional yeast</strong>
+                  <li class='ingredients__ingredient'> ¾ cup <strong>water</strong> or <strong>soy milk</strong>
+                  <li class='ingredients__ingredient'> Squeeze of <strong>lemon juice</strong>
+                  <li class='ingredients__ingredient'> <strong>Salt</strong> to taste
+                </ul>
+              </block>
+
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> In a blender or food processor, <strong>puree all ingredients</strong> until smooth. </li>
+                  <li class='directions__direction'> Season to taste. Add <strong>water to loosen</strong> or <strong>more nuts to thicken</strong>. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe recipe__subrecipe--assembly'>
+              <h4 class='recipe__title'> To assemble </h4>
+
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> <strong>An hour before dinner</strong>, remove <strong>potatoes</strong> from fridge. <strong>Strain cabbage</strong> from brine. </li>
+                  <li class='directions__direction'> Slice <strong>potatoes</strong> in half <strong>length-wise</strong>. Sprinkle <strong>potatoes</strong> with a little <strong>salt</strong> and <strong>pepper</strong> and divide into <strong>four bowls</strong>. </li>
+                  <li class='directions__direction'> Drizzle <strong>potatoes</strong> with <strong>crema</strong> (or <strong>cashew sauce</strong>). Mount <strong>pickled cabbage</strong> on top, plus <strong>cilantro</strong>. </li>
+                </ul>
+              </block>
+            </block>
+          </block>
+        </block>
+
+        <block class='recipe recipes__recipe'>
+          <a id='recipe__soup' />
+          <block class='recipe__header'>
+            <h2 class='recipe__title'> Salmorejo (chilled Spanish tomato soup) garnished with eggs, breadcrumbs, and ham </h2>
+            <h3 class='recipe__subtitle'> (vegan alternative with cashew sauce included!) </h3>
+            <h6 class='recipe__yield'> Makes 4 to 6 servings. </h6>
+          </block>
+
+          <img class='recipe__image' src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/16f1ae25-af8f-496b-80ea-2b2130548fa7.jpg' />
+
+          <block class='recipe__content'>
+            <block class='ingredients recipe__ingredients'>
+              <h4 class='ingredients__title'> Ingredients </h4>
+              <ul class='ingredients__list'>
+                <li class='ingredients__ingredient'> 4 ripe, large <strong>tomatoes</strong>
+                <li class='ingredients__ingredient'> 3 slices <strong>bread</strong>
+                <li class='ingredients__ingredient'> 2 <strong>garlic cloves</strong>, peeled
+                <li class='ingredients__ingredient'> 4 tbsp <strong>olive oil</strong>
+                <li class='ingredients__ingredient'> 2½ cups (625 mL) <strong>tomato juice</strong> or <strong>water</strong> </li>
+                <li class='ingredients__ingredient'> 2 tsp <strong>vinegar</strong> </li>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> (try the same one you used for the <strong><a href='#recipe__pickled-cabbage'>cabbage brine</a></strong>) </li>
+                  </ul>
+                </li>
+                <li class='ingredients__ingredient'> 1 <strong>egg</strong>
+                <li class='ingredients__ingredient'> 2 slices <strong>prosciutto</strong>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> This Spanish soup is traditionally served with <strong>Serrano ham</strong>; <strong>prosciutto</strong> is more widely available here.</li>
+                    <li class='notes__note'> Alternately, <strong>omit this</strong> to make the dish <strong>vegetarian</strong>. </li>
+                  </ul>
+                </li>
+                <li class='ingredients__ingredient'> <strong>Salt</strong> and <strong>pepper</strong> to taste </li>
+              </ul>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Eggs </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Place <strong>eggs</strong> in a small pot with <strong>cold water</strong>. Bring to boil, remove from heat and cover for <strong>9 minutes</strong>. </li>
+                  <li class='directions__direction'> Transfer <strong>eggs</strong> to <strong>ice water bath</strong>. Once cooled, <strong>peel and chop</strong> the <strong>eggs</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> Advanced technique: The white and yolk separate easily. <strong>Crumble the yolk</strong> and <strong>chop the white</strong>. </li>
+                    </ul>
+                  </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <a id='recipe__breadcrumbs' />
+              <h4 class='recipe__title'> Breadcrumbs </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Remove the <strong>crust from the bread</strong> and set aside. Tear the <strong>soft inside of the bread</strong> into small bits. </li>
+                  <li class='directions__direction'> In a large pan on a medium heat, sauté <strong>bread</strong> with <strong>garlic</strong> and half the <strong>olive oil</strong>, until crispy, about <strong>10 minutes</strong>. </li>
+                  <li class='directions__direction'> Season to taste with <strong>salt</strong> and <strong>pepper</strong>. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Tomatoes </h4>
+
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Quarter <strong>tomatoes</strong> and puree in blender. Tear <strong>bread crust</strong> into chunks and soak in the <strong>tomato mixture</strong> a few minutes before pureeing further. Let the machine run until the mixture is smooth. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> For bread crust, see <strong><a href='#recipe__breadcrumbs'>Breadcrumbs</a></strong>, above. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> Then slowly add <strong>tomato juice</strong>, <strong>vinegar</strong>, the <strong>garlic</strong> and remaining <strong>olive oil</strong> and blend for a couple more minutes, until it is <strong>shiny</strong>. </li>
+                  <li class='directions__direction'> Season to taste with <strong>salt</strong>. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe recipe__subrecipe--assembly'>
+              <h4 class='recipe__title'> To assemble </h4>
+
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Tear the <strong>ham</strong> into small bits. Serve soup in bowls <strong>garnished with egg</strong>, <strong>breadcrumbs</strong> and <strong>ham</strong>. </li>
+                </ul>
+              </block>
+            </block>
+          </block>
+        </block>
+
+        <block class='recipe recipes__recipe'>
+          <a id='recipe__tacos' />
+          <block class='recipe__header'>
+            <h2 class='recipe__title'> Tacos: homemade tortilla with roasted pork, pickled jalapeños, jicama, cotilla cheese, and pico de gallo </h2>
+            <h3 class='recipe__subtitle'> (vegan alternative with roasted cauliflower included!) </h3>
+            <h6 class='recipe__yield'> Makes 4 servings. </h6>
+          </block>
+
+          <img class='recipe__image' src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/db270b84-e89b-44e5-9562-a15d1436ad82.jpg' />
+
+          <block class='recipe__content'>
+            <block class='ingredients recipe__ingredients'>
+              <h4 class='ingredients__title'> Ingredients </h4>
+              <ul class='ingredients__list'>
+                <li class='ingredients__ingredient'> 2 lbs <strong>pork shoulder</strong> </li>
+                <li class='ingredients__ingredient'> 2 tbsp <strong>sugar</strong>  </li>
+                <li class='ingredients__ingredient'> 2 tbsp <strong>kosher salt</strong>  </li>
+                <li class='ingredients__ingredient'> 1 tbsp <strong>brown sugar</strong>  </li>
+                <li class='ingredients__ingredient'> 2 tbsp <strong>chili powder</strong>  </li>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> Roasting and grinding <strong>dried chilies</strong> like <strong>ancho</strong> or <strong>morita</strong> makes a world of difference. But a store bought chili powder will do fine. </li>
+                  </ul>
+                </li>
+                <li class='ingredients__ingredient'> 7 <strong>jalapeños</strong> </li>
+                <li class='ingredients__ingredient'> ½ batch of <strong>pickling brine</strong> </li>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> (see <strong><a href='#recipe__pickled-cabbage'>pickled cabbage recipe</a></strong>) </li>
+                  </ul>
+                </li>
+                <li class='ingredients__ingredient'> 2 <strong>tomatoes</strong> </li>
+                <li class='ingredients__ingredient'> ½ small <strong>white onion</strong> </li>
+                <li class='ingredients__ingredient'> 1 tbsp <strong>limejuice</strong> </li>
+                <li class='ingredients__ingredient'> <strong>Cilantro</strong> </li>
+                <li class='ingredients__ingredient'> ½ cup <strong>cotija cheese</strong>, grated </li>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> Cotija is a firm, salty cow’s milk cheese from Mexico. If you can’t find it at a Latin grocery, substitute a <strong>hard feta</strong>. </li>
+                  </ul>
+                </li>
+                <li class='ingredients__ingredient'> ½ <strong>jicama</strong> </li>
+                <li class='ingredients__ingredient'> 1½ cups <strong>masa</strong> </li>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> Processed corn flour for making tortillas or tamales. Available at Latin groceries. </li>
+                  </ul>
+                </li>
+              </ul>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Roast Pork Shoulder </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Preheat the oven to <strong>300F</strong>. Rub the <strong>pork</strong> with the <strong>sugar</strong> and <strong>salt</strong>.  Place the <strong>pork</strong> on a roasting rack and slide it into the oven. </li>
+                  <li class='directions__direction'> After a couple hours the <strong>pork fat</strong> will start rendering. Use it to <strong>baste the meat</strong>. After <strong>four hours</strong> it will be <strong>soft</strong> but after <strong>six hours</strong> it will be <strong>gooey</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> You can <strong>cut the time</strong> down with an <strong>ovenproof</strong>, <strong>lidded casserole</strong> and a little <strong>water</strong> at the bottom. Though you’ll lose some of the texture. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> Finish by cranking the oven to <strong>500F</strong> and rubbing the <strong>meat</strong> with the <strong>brown sugar</strong> and <strong>chili powder</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> <strong>Ten minutes</strong> should give the meat a good <strong>crust</strong>. But <strong>watch closely</strong> to prevent burning. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> Remove from oven. Reserve extra rendered fat. It is amazing for frying vegetables. </li>
+                  <li class='directions__direction'> When <strong>pork</strong> is <strong>cool</strong> enough to handle, remove any fat you deem excessive. <strong>Shred</strong> with a fork or your hands. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Roast Cauliflower </h4>
+              <h5 class='recipe__subtitle'> A delicious, veggie substitution! </h5>
+              <block class='ingredients recipe__ingredients'>
+                <h4 class='ingredients__title'> Ingredients </h4>
+                <ul class='ingredients__list'>
+                  <li class='ingredients__ingredient'> ½ <strong>cauliflower</strong> </li>
+                  <li class='ingredients__ingredient'> 1 tbsp <strong>oil</strong> (vegetable, canola, grapeseed) </li>
+                  <li class='ingredients__ingredient'> 1 tbsp <strong>chili powder</strong> </li>
+                  <li class='ingredients__ingredient'> <strong>Salt</strong> to taste </li>
+                </ul>
+              </block>
+
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Preheat oven to <strong>375F</strong>. Line a baking pan with <strong>parchment paper</strong>. </li>
+                  <li class='directions__direction'> Remove thickest part of <strong>cauliflower</strong> stem. Slice florets into bit-sized pieces. </li>
+                  <li class='directions__direction'> On the parchment paper, combine <strong>cauliflower</strong>, <strong>oil</strong>, <strong>chili powder</strong> and <strong>salt</strong>. Mix thoroughly. </li>
+                  <li class='directions__direction'> <strong>Spread</strong> on baking sheet and <strong>roast</strong> until <strong>lightly browned</strong>, about <strong>15 minutes</strong>. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <a id='recipe__pickled-jalapeños' />
+              <h4 class='recipe__title'> Pickled Jalapeños </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Put aside half a <strong>jalapeño</strong> for the salsa. </li>
+                  <li class='directions__direction'> Using the extra half-batch of <strong>pickling brine</strong>, slice <strong>jalapeños</strong> and repeat the same steps. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> Did you save an extra half-batch of brine while making the <strong><a href='#recipe__pickled-cabbage'>pickled cabbage</a></strong>? If not, make some more, and <strong>repeat the process</strong> with these jalapeño slices. </li>
+                      <li class='notes__note'> This will make much more than you’ll need. But they’ll keep for a long time in the fridge and you can always use pickled jalapeños. </li>
+                    </ul>
+                  </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Jicama </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Use a <strong>peeler</strong> or <strong>knife</strong> to remove skin of <strong>jicama</strong>. </li>
+                  <li class='directions__direction'> Slice the flesh into <strong>thin strips</strong>. Toss with squeeze of <strong>lime juice</strong>. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Pico de gallo (salsa) </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> In a <strong>mixing bowl</strong>, combine <strong>tomatoes</strong>, <strong>onion</strong>, <strong>jalapeño</strong> (it should be Serrano, but I’m not gonna ask you to get a separate chili), <strong>limejuice</strong> and season to taste with <strong>salt</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> Don’t make it too far in advance as it gets watery. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> <strong>Serve</strong> at room temperature. </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe'>
+              <h4 class='recipe__title'> Tortillas </h4>
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Making <strong>fresh tortillas</strong> sounds complicated. But the first time you do it, you’ll be amazed at the amount of <strong>deliciousness</strong> that comes from such a <strong>small amount of effort</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> It <strong>does not</strong> require fancy equipment. A tortilla press is nice but you can make dough with more <strong>basic tools</strong>. </li>
+                      <li class='notes__note'> It <strong>does</strong>, however, require you to <strong>work quickly</strong> and <strong>use your senses</strong> to tell when the dough is getting dry, which is <strong>easily fixed</strong> with a splash of water. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> Warm a <strong>pan</strong> on the stove with a <strong>medium-low heat</strong>. </li>
+                  <li class='directions__direction'> In a <strong>large mixing bowl</strong>, combine <strong>masa</strong> with 1 cup <strong>water</strong> and a sprinkle of <strong>salt</strong>. Mix by hand until it forms a <strong>dough</strong>. </li>
+                  <li class='directions__direction'> Break off a <strong>golf ball sized</strong> piece of <strong>dough</strong>. Roll it into a <strong>ball</strong> and place it in a <strong>clear plastic bag</strong>. </li>
+                  <li class='directions__direction'> Using the base of a heavy pan, <strong>flatten</strong> the ball <strong>inside the bag</strong>, then use a <strong>rolling pin</strong> to spread it out about <strong>5-6 inches wide</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> If you don’t have a rolling pin, use <strong>whatever cylinder</strong> you have; a <strong>wine bottle</strong> or a <strong>peanut butter jar</strong> will work. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> Transfer the <strong>tortilla</strong> to the <strong>warm pan</strong>. Toast until it <strong>begins to brown</strong> then use a spatula to <strong>flip</strong>. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> It won’t need more than <strong>30 seconds</strong> on each side. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> <strong>Transfer</strong> to a pan and <strong>cover</strong> with a <strong>moist towel</strong>. <strong>Repeat</strong> the process with the remaining dough. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> As the dough begins to dry (covering it with a moist towel will help too), work in a splash of water. </li>
+                    </ul>
+                  </li>
+                  <li class='directions__direction'> Once you have <strong>all</strong> your <strong>tortillas</strong> cooked (should make about 12), <strong>serve</strong> immediately. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> It is <strong>ideal</strong> to make the tortillas at the <strong>last minute</strong> before dinner. But if you are preparing them <strong>in advance</strong>, keep them in the <strong>warming pan</strong> covered with the <strong>moist towel</strong>, and place them in the <strong>oven</strong> at the <strong>lowest possible heat</strong>, which should be <strong>150F</strong>. </li>
+                    </ul>
+                  </li>
+                </ul>
+              </block>
+            </block>
+
+            <block class='recipe recipe__subrecipe recipe__subrecipe--assembly'>
+              <h4 class='recipe__title'> To assemble </h4>
+
+              <block class='directions recipe__directions'>
+                <ul class='directions__list'>
+                  <li class='directions__direction'> Place a <strong>little bit</strong> of <strong>every ingredient</strong> on each <strong>tortilla</strong>. Don’t overload them. </li>
+                  <li class='notes directions__notes'>
+                    <ul>
+                      <li class='notes__note'> I know it’s tempting to put out the spread of toppings and let guests assemble their own tortillas. But people tend to <strong>overload</strong> tacos. It’s nicer if you <strong>compose</strong> the dish for them. </li>
+                    </ul>
+                  </li>
+                </ul>
+              </block>
+            </block>
+          </block>
+        </block>
+
+        <block class='recipe recipes__recipe'>
+          <a id='recipe__cookies' />
+          <block class='recipe__header'>
+            <h2 class='recipe__title'> Ginger Molasses Cookies </h2>
+          </block>
+
+          <img class='recipe__image' src='https://gallery.mailchimp.com/1c246dbd2f86faaafc7ce23bd/images/fd6e14a3-16b6-42a7-80d4-cad0416e8666.jpg' />
+
+          <block class='recipe__content'>
+            <block class='ingredients recipe__ingredients'>
+              <h4 class='ingredients__title'> Ingredients </h4>
+              <ul class='ingredients__list'>
+                <li class='ingredients__ingredient'> 4 tbsp <strong>unsalted butter</strong>
+                <li class='ingredients__ingredient'> 1 inch <strong>fresh ginger</strong>
+                <li class='ingredients__ingredient'> 1 cup <strong>all purpose flour</strong>
+                <li class='ingredients__ingredient'> 1 tsp <strong>baking soda</strong>
+                <li class='ingredients__ingredient'> 1 tsp <strong>ground ginger</strong>
+                <li class='ingredients__ingredient'> 1 tsp <strong>ground cinnamon</strong>
+                <li class='ingredients__ingredient'> pinch of <strong>salt</strong>
+                <li class='ingredients__ingredient'> 2 tbsp <strong>molasses</strong>
+                <li class='ingredients__ingredient'> ¼ cup <strong>sugar</strong>
+                <li class='ingredients__ingredient'> 3 tbsp <strong>brown sugar</strong>
+                <li class='ingredients__ingredient'> 1 <strong>egg</strong>
+                <li class='ingredients__ingredient'> ¼ cup <strong>demerara</strong> or <strong>turbinado sugar</strong>
+                <li class='notes ingredients__notes'>
+                  <ul>
+                    <li class='notes__note'> The large crystal sugar, available in the baking aisle of most grocery stores. </li>
+                  </ul>
+                </li>
+              </ul>
+            </block>
+
+            <block class='directions recipe__directions'>
+              <ul class='directions__list'>
+                <li class='notes directions__notes'>
+                  <ul>
+                    <li class='notes__note'> This recipe is adapted from <strong><a href='https://www.amazon.com/gp/product/1579653979/ref=as_li_tl?ie=UTF8&tag=cookformom-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1579653979&linkId=ecf645f87a7d66a533ecff91e3e0ae85' target='_blank'>Chewy Gooey Crispy Crunchy Melt-In-Your-Mouth Cookies</a></strong> by <strong>Alice Medrich</strong>. </li>
+                    <li class='notes__note'> The key to good, <strong>soft cookies</strong> is <strong>under-baking</strong> them. I cut the <strong>baking times</strong> from most recipes <strong>in half</strong>. </li>
+                  </ul>
+                </li>
+                <li class='directions__direction'> In a <strong>small pan</strong>, melt the <strong>butter</strong>. </li>
+                <li class='directions__direction'> Use a <strong>grater</strong> (microplane if you have it) to grate <strong>ginger</strong>. </li>
+                <li class='directions__direction'> In a <strong>large mixing bowl</strong>, combine <strong>fresh ginger</strong>, <strong>flour</strong>, <strong>ground ginger</strong>, <strong>cinnamon</strong>, <strong>salt</strong>, <strong>molasses</strong>, <strong>white</strong> and <strong>brown sugars</strong>, <strong>butter</strong> and <strong>egg</strong> and mix thoroughly with a <strong>spatula</strong>. </li>
+                <li class='directions__direction'> Line a baking sheet with <strong>parchment paper</strong>. Form the <strong>dough</strong> into <strong>golf-sized balls</strong> and <strong>slightly flatten</strong> them with your <strong>palm</strong>. <strong>Dip</strong> them in the <strong>turbinado sugar</strong> and place them on the baking sheet. </li>
+                <li class='directions__direction'> Preheat oven to <strong>325F</strong>. Bake cookies <strong>6 to 8 minutes</strong>, rotating tray <strong>halfway</strong>. Serve warm. </li>
+                <li class='notes directions__notes'>
+                  <ul>
+                    <li class='notes__note'> The <strong>small</strong> and <strong>easy</strong> step of baking <strong>fresh cookies</strong> is all the difference between good and great. We recommend you start preheating the oven <strong>only when dinner is finished</strong>. </li>
+                  </ul>
+                </li>
+              </ul>
+            </block>
+          </block>
+        </block>
+      </block>
+
+      <block class='footer'>
+        *|IF:LIST|*
+          <p>
+            <em>Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em><br />
+            <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+              You are receiving this email because you signed up for a digital cooking class at <a href='https://cookformom.com?utm_source=mailchimp&utm_medium=email&utm_campaign=*|CAMPAIGN_UID|*&utm_content=footer-link&mc_referrer=*|EMAIL|*' target='_blank'>https://cookformom.com</a>
+            </p>
+            <p>
+              <strong>Our mailing address is:</strong><br />
+              10667994 Canada Inc.<br />
+              PO Box 40024<br />
+              Dupont PO<br />
+              Toronto, Ontario, Canada
+            </p>
+            <!-- *|END:IF|* -->
+          </p>
+        *|ELSE:|*
+          <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+            <p> <em>Copyright &copy; *|CURRENT_YEAR|* *|USER:COMPANY|*, All rights reserved.</em> </p>
+            <p>
+              <strong>Our mailing address is:</strong><br />
+              10667994 Canada Inc.<br />
+              PO Box 40024<br />
+              Dupont PO<br />
+              Toronto, Ontario, Canada
+            </p>
+          <!-- *|END:IF|* -->
+        *|END:IF|*
+
+        <p>
+          <a href="*|UNSUB|*">unsubscribe from this list</a>
+          | <a href="*|UPDATE_PROFILE|*" class="utilityLink">update subscription preferences</a>
+          <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+            | <a href="*|ARCHIVE|*" class="utilityLink">view email in browser</a>
+          <!-- *|END:IF|* -->
+        </p>
+      </block>
+    </container>
+  </body>
+</heml>
