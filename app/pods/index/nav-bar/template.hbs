@@ -40,11 +40,6 @@
               <em>Enter your email</em> below and <em>immediately</em>
               receive your <em>free</em> Mother's Day <em>meal plan</em>!
             {{/if}}
-
-            <button class='btn-close btn-link'
-              onclick={{action close tooltip.hide}}>
-              X
-            </button>
           {{/form.header}}
 
           {{#form.main}}
@@ -81,9 +76,20 @@
 
           {{#form.footer class=(if form.isSubmitted 'mt-4' 'small')}}
             {{#if form.isSubmitted}}
+              <button class='btn btn-link'
+                onclick={{action close tooltip.hide}}>
+                Close
+              </button>
+
+              or
+
               {{form.thanks.footer}}
             {{else}}
               100% private; your information is not for sale.
+              <button class='btn btn-link'
+                onclick={{action close tooltip.hide}}>
+                Close
+              </button>
             {{/if}}
           {{/form.footer}}
         {{/form-signup}}
