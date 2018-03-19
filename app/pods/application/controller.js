@@ -5,11 +5,8 @@ import { inject as service } from '@ember/service';
 import md5 from 'md5';
 
 export default Controller.extend({
-  fingerprintjs: service(),
-  firebase: service(),
   metrics: service(),
   router: service(),
-  raven: service(),
 
   fingerprint: null, // n.b. set on init
   canNudgeUser: false,
