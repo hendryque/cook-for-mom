@@ -42,7 +42,7 @@
             {{/if}}
           {{/form.header}}
 
-          {{#form.main}}
+          {{#form.main class=(if form.isSubmitted 'is-submitted')}}
             {{#if form.isSubmitted}}
               {{form.thanks.main}}
             {{else}}

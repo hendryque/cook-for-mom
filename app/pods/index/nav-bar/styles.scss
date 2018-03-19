@@ -61,6 +61,10 @@ fieldset {
   button {
     width: 100%;
   }
+
+  &.is-submitted {
+    width: 100%;
+  }
 }
 
 input {
