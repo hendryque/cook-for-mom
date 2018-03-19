@@ -30,6 +30,21 @@ header {
     font-style: normal;
     font-weight: 400;
   }
+
+  button.btn-close {
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    font-size: 1rem;
+    color: black;
+    font-weight: 300;
+    border: none;
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
 }
 
 footer {

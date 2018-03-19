@@ -16,44 +16,56 @@
     onViewportEntered=(action onFormVisibilityChange true)
     onViewportExited=(action onFormVisibilityChange false) as |form|}}
     {{#form.header}}
-      Get <em>a gourmet meal plan</em> mom will love,<br />
-      plus <em>six free lessons</em> for everything<br />
-      from <em>shopping</em> to <em>cooking</em> to <em>serving</em>.<br />
+      {{#if form.isSubmitted}}
+        {{form.thanks.header}}
+      {{else}}
+        Get <em>a gourmet meal plan</em> mom will love,<br />
+        plus <em>six free lessons</em> for everything<br />
+        from <em>shopping</em> to <em>cooking</em> to <em>serving</em>.<br />
+      {{/if}}
     {{/form.header}}
 
-    {{#form.main}}
-      <div class='input-group d-block d-md-flex'>
-        <input type='email' class='form-control'
-          placeholder='julias.child@cookformom.com'
-          onfocus={{action (mut isInputFocused) true}}
-          onblur={{action (mut isInputFocused) false}}
-          onkeydown={{action form.keydown}}
-          oninput={{action onInput value='target.value'}}
-          aria-label="Your email"
-          value={{email}}>
-        <div class='input-group-append'>
-          <button class='btn bg-primary btn-outline-primary text-white' type='button'
-            disabled={{not validations.isValid}}
-            onclick={{action form.submit}}>
-            Get Free Meal Plan
-          </button>
-          {{! todo: disable unless filled in + show CSS tooltip }}
-        </div>
-
-        {{#if (and
-          (not validations.isValid)
-          (gt email.length 0)
-          (not isInputFocused)
-        )}}
-          <div class='invalid-feedback d-block'>
-            {{map validations.attrs.email.errors by='message'}}
+    {{#form.main class=(if form.isSubmitted 'text-center')}}
+      {{#if form.isSubmitted}}
+        {{form.thanks.main}}
+      {{else}}
+        <div class='input-group d-block d-md-flex'>
+          <input type='email' class='form-control'
+            placeholder='julias.child@cookformom.com'
+            onfocus={{action (mut isInputFocused) true}}
+            onblur={{action (mut isInputFocused) false}}
+            onkeydown={{action form.keydown}}
+            oninput={{action onInput value='target.value'}}
+            aria-label="Your email"
+            value={{email}}>
+          <div class='input-group-append'>
+            <button class='btn bg-primary btn-outline-primary text-white' type='button'
+              disabled={{not validations.isValid}}
+              onclick={{action form.submit}}>
+              Get Free Meal Plan
+            </button>
+            {{! todo: disable unless filled in + show CSS tooltip }}
           </div>
-        {{/if}}
-      </div>
+
+          {{#if (and
+            (not validations.isValid)
+            (gt email.length 0)
+            (not isInputFocused)
+          )}}
+            <div class='invalid-feedback d-block'>
+              {{map validations.attrs.email.errors by='message'}}
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
     {{/form.main}}
 
-    {{#form.footer class='small'}}
-      100% private; your information is not for sale.
+    {{#form.footer class=(if form.isSubmitted 'mt-4' 'small')}}
+      {{#if form.isSubmitted}}
+        {{form.thanks.footer reset=(action form.reset)}}
+      {{else}}
+        100% private; your information is not for sale.
+      {{/if}}
     {{/form.footer}}
   {{/form-signup}}
 {{/ember-wormhole}}

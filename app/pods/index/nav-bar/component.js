@@ -17,10 +17,6 @@ export default Component.extend({
 
   _didNudgeOnHover: false,
 
-  init() {
-    this._super(...arguments);
-  },
-
   didInsertElement() {
     setActiveAnchor.call(this);
     this._anchorChangeListener = bind(this, once, this, setActiveAnchor);

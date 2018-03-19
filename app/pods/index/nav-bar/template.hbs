@@ -31,43 +31,54 @@
         {{#form-signup
           didSubmit=didSubmit
           shouldFocusInput=isNudging
-          canReset=false
           onSubmit=(action onSubmit) as |form|}}
           {{#form.header}}
-            <em>Enter your email</em> below and <em>immediately</em>
-            receive your <em>free</em> Mother's Day <em>meal plan</em>!
+            {{#if form.isSubmitted}}
+              {{form.thanks.header}}
+            {{else}}
+              <em>Enter your email</em> below and <em>immediately</em>
+              receive your <em>free</em> Mother's Day <em>meal plan</em>!
+            {{/if}}
           {{/form.header}}
 
           {{#form.main}}
-            <input type='email' class='form-control'
-              tabindex=1
-              placeholder='julias.child@cookformom.com'
-              onfocus={{action (mut isInputFocused) true}}
-              onblur={{action (mut isInputFocused) false}}
-              onkeydown={{action form.keydown}}
-              oninput={{action onInput value='target.value'}}
-              aria-label="Your email"
-              value={{email}}>
+            {{#if form.isSubmitted}}
+              {{form.thanks.main}}
+            {{else}}
+              <input type='email' class='form-control'
+                tabindex=1
+                placeholder='julias.child@cookformom.com'
+                onfocus={{action (mut isInputFocused) true}}
+                onblur={{action (mut isInputFocused) false}}
+                onkeydown={{action form.keydown}}
+                oninput={{action onInput value='target.value'}}
+                aria-label="Your email"
+                value={{email}}>
 
-            {{#if (and
-              (not validations.isValid)
-              (gt email.length 0)
-              (not isInputFocused)
-            )}}
-              <div class='invalid-feedback d-block'>
-                {{map validations.attrs.email.errors by='message'}}
-              </div>
+              {{#if (and
+                (not validations.isValid)
+                (gt email.length 0)
+                (not isInputFocused)
+              )}}
+                <div class='invalid-feedback d-block'>
+                  {{map validations.attrs.email.errors by='message'}}
+                </div>
+              {{/if}}
+
+              <button class='btn bg-primary btn-outline-primary text-white' type='button'
+                disabled={{not validations.isValid}}
+                onclick={{action form.submit}}>
+                Sign Me Up
+              </button>
             {{/if}}
-
-            <button class='btn bg-primary btn-outline-primary text-white' type='button'
-              disabled={{not validations.isValid}}
-              onclick={{action form.submit}}>
-              Sign Me Up
-            </button>
           {{/form.main}}
 
-          {{#form.footer class='small'}}
-            100% private; your information is not for sale.
+          {{#form.footer class=(if form.isSubmitted 'mt-4' 'small')}}
+            {{#if form.isSubmitted}}
+              {{form.thanks.footer}}
+            {{else}}
+              100% private; your information is not for sale.
+            {{/if}}
           {{/form.footer}}
         {{/form-signup}}
       {{/bs-tooltip}}

@@ -1,19 +1,16 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { isPresent } from '@ember/utils';
-import { bind, next, once } from '@ember/runloop';
+import { bind, next, once, schedule } from '@ember/runloop';
 import { inject as service } from '@ember/service';
-
-import share from '../../../utils/share';
 
 export default Component.extend({
   tagName: 'form',
 
   isMobile: service(),
-  metrics: service(),
 
   didSubmit: false,
-  canReset: true,
   didReset: false,
   shouldFocusInput: not('isMobile.any'),
 
@@ -24,6 +21,9 @@ export default Component.extend({
   headerComponent: 'form-signup/header',
   mainComponent: 'form-signup/main',
   footerComponent: 'form-signup/footer',
+  thanksHeaderComponent: 'form-signup/thanks/header',
+  thanksMainComponent: 'form-signup/thanks/main',
+  thanksFooterComponent: 'form-signup/thanks/footer',
 
   didInsertElement() {
     let {
@@ -61,14 +61,9 @@ export default Component.extend({
     this._viewportListener = null;
   },
 
-  share(platform) {
-    this.get('metrics').trackEvent('Segment', {
-      event: 'share',
-      platform
-    });
-
-    share(platform);
-  },
+  isSubmitted: computed('didSubmit', 'didReset', function() {
+    return this.get('didSubmit') && !this.get('didReset');
+  }),
 
   keydown(event) {
     switch (event.key) {
@@ -82,6 +77,13 @@ export default Component.extend({
     if (this.get('onSubmit')(event) !== false) {
       this.set('didReset', false);
     }
+  },
+
+  reset() {
+    this.set('didReset', true);
+    schedule('afterRender', this, () => {
+      this.element.querySelector('input').focus();
+    });
   }
 });
 
