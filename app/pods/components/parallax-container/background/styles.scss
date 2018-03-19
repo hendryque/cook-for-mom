@@ -1,0 +1,34 @@
+& {
+  position: absolute;
+  width: 100%;
+  height: 300%;
+  z-index: -1;
+  overflow: hidden;
+
+  // transform: defined on the fly in component.js
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &.potatoes {
+    background-image: url('/assets/images/food/potatoes-1800.jpg');
+    background-position: center;
+  }
+
+  &.soup {
+    background-image: url('/assets/images/food/soup-1800.jpg');
+    background-position: center;
+  }
+
+  &.tacos {
+    background-image: url('/assets/images/food/tacos-1-1800.jpg');
+  }
+
+  &.cookies {
+    background-image: url('/assets/images/food/cookies-1800.jpg');
+  }
+
+  &.heart {
+    background-image: url('/assets/images/heart.jpg');
+    background-position: center;
+  }
+}

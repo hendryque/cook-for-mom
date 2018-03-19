@@ -1,5 +1,6 @@
 & {
   height: 100%;
-  transform: translateZ(-1px) scale(2);
   z-index: -1;
+
+  // n.b. transform handled by component
 }
