@@ -64,6 +64,11 @@ export default Component.extend({
 
       this._hoverNudgeListener = null;
     }
+  },
+
+  close(hideFn) {
+    this.set('isNudging', false);
+    hideFn();
   }
 });
 

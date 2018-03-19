@@ -27,7 +27,8 @@
       {{#bs-tooltip
         position='bottom'
         visible=isNudging
-        onHidden=(action cancelNudge)}}
+        layout='bs-tooltip'
+        onHidden=(action cancelNudge) as |tooltip|}}
         {{#form-signup
           didSubmit=didSubmit
           shouldFocusInput=isNudging
@@ -39,6 +40,11 @@
               <em>Enter your email</em> below and <em>immediately</em>
               receive your <em>free</em> Mother's Day <em>meal plan</em>!
             {{/if}}
+
+            <button class='btn-close btn-link'
+              onclick={{action close tooltip.hide}}>
+              X
+            </button>
           {{/form.header}}
 
           {{#form.main}}
