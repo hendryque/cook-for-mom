@@ -5,6 +5,9 @@ import { inject as service } from '@ember/service';
 import { next, schedule } from '@ember/runloop';
 import { task, timeout, waitForProperty } from 'ember-concurrency';
 
+import md5 from 'md5';
+import { getUrlParameter } from '../utils/url';
+
 export default SegmentAdapter.extend({
   fingerprintjs: service(),
   firebase: service(),
@@ -42,11 +45,19 @@ export default SegmentAdapter.extend({
 });
 
 function ensureFingerprintBefore(funcName) {
-  return function (...args) {
+  return function (options) {
+    if (typeof FastBoot !== 'undefined') {
+      return;
+    }
+
     if (!this.get('isReady')) {
-      next(this, schedule, 'afterRender', this, funcName, ...args);
+      next(this, schedule, 'afterRender', this, funcName, options);
     } else {
-      this._super(...args);
+      options.mc_referrer = md5(getUrlParameter('mc_referrer'));
+      options.fingerprint = options.fingerprint ||
+        this.get('fingerprintjs.fingerprint.result');
+
+      this._super(options);
     }
   }
 }
