@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { isBlank } from '@ember/utils';
 
 import md5 from 'md5';
 
@@ -51,6 +52,10 @@ export default Controller.extend({
   },
 
   onEmailSubmitted(application, email, source) {
+    if (isBlank(email)) {
+      return; // n.b. for some reason this is firing when the navbar modal closes
+    }
+
     let distinctId = md5(email);
     let metrics = application.get('metrics');
 
