@@ -1,18 +1,31 @@
 import Controller from '@ember/controller';
+import ObjectProxy from '@ember/object/proxy';
+import PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
+
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { isBlank } from '@ember/utils';
+import { isBlank, isPresent } from '@ember/utils';
 
 import md5 from 'md5';
 
+const ObjectPromiseProxy = ObjectProxy.extend(PromiseProxyMixin);
+
 export default Controller.extend({
+  fingerprintjs: service(),
+  firebase: service(),
   metrics: service(),
   router: service(),
 
   fingerprint: null, // n.b. set on init
   canNudgeUser: false,
-  didSubmit: computed(function() {
-    return typeof FastBoot === 'undefined' && localStorage.getItem('didSubmit');
+  isSubscriber: computed('fingerprintjs.fingerprint.result', isSubscriber),
+  didSubmit: computed('isSubscriber.exists', function() {
+    if (typeof FastBoot !== 'undefined') {
+      return false;
+    }
+
+    return this.get('isSubscriber.isFulfilled') &&
+      this.get('isSubscriber.exists')
   }),
 
   isNudging: null, // is object
@@ -66,7 +79,17 @@ export default Controller.extend({
     });
 
     application.set('didSubmit', true);
-    localStorage.setItem('didSubmit', true);
+    application.get('firebase').firestore()
+      .collection('signups')
+      .doc(application.get('fingerprintjs.fingerprint.result'))
+      .set({ createdAt: new Date().valueOf() })
+      .catch((err) => {
+        if (err.code === 'permission-denied') {
+          return; // document exists
+        }
+
+        throw err;
+      });
   },
 
   trackAffiliate(application, merchant, item, { target } = { target: {} }) {
@@ -80,3 +103,19 @@ export default Controller.extend({
     });
   }
 });
+
+function isSubscriber() {
+  let fingerprint = this.get('fingerprintjs.fingerprint.result');
+  let firebase = this.get('firebase');
+
+  if (isBlank(fingerprint)) {
+    return false;
+  }
+
+  return ObjectPromiseProxy.create({
+    promise: firebase.firestore()
+      .collection('signups')
+      .doc(fingerprint)
+      .get()
+  });
+}
