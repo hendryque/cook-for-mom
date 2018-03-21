@@ -7,7 +7,7 @@ export default Component.extend({
   scale: 2, // todo: compute this from z, with #math
 
   didInsertElement() {
-    this._onResize = bind(this, computeStyleTop);
+    this._onResize = bind(this, computeTransform);
 
     next(this, this._onResize);
     window.addEventListener('resize', this._onResize, { passive: true });
@@ -21,7 +21,7 @@ export default Component.extend({
   }
 });
 
-function computeStyleTop() {
+function computeTransform() {
   let { element, z, scale, userAgent } =
     this.getProperties('element', 'z', 'scale', 'userAgent');
   let frameHeight = element.parentElement.clientHeight;
