@@ -33,7 +33,7 @@ function computeStyleTop() {
     `scale(${scale})`, // scale back to same visual size; todo compute scale factor dynamically
   ];
 
-  if (userAgent.get('browser.isChrome')) {
+  if (userAgent.get('browser.isChrome') && !userAgent.get('os.isIOS')) {
     element.style.transform = transforms.join(' ');
   }
 }
