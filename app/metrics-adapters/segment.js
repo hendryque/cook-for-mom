@@ -3,6 +3,7 @@ import SegmentAdapter from 'ember-metrics/metrics-adapters/segment';
 import { get } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { next, schedule } from '@ember/runloop';
+import { isPresent } from '@ember/utils';
 import { task, timeout, waitForProperty } from 'ember-concurrency';
 
 import md5 from 'md5';
@@ -53,7 +54,12 @@ function ensureFingerprintBefore(funcName) {
     if (!this.get('isReady')) {
       next(this, schedule, 'afterRender', this, funcName, options);
     } else {
-      options.mc_referrer = md5(getUrlParameter('mc_referrer'));
+      let mcReferrer = getUrlParameter('mc_referrer');
+
+      if (isPresent(mcReferrer)) {
+        options.mc_referrer = md5(mcReferrer);
+      }
+
       options.fingerprint = options.fingerprint ||
         this.get('fingerprintjs.fingerprint.result');
 
